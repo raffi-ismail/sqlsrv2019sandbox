@@ -30,16 +30,13 @@ RUN apt-get install -qqy  mssql-tools unixodbc-dev
 RUN echo 'export PATH="$PATH:/opt/mssql-tools/bin"' >> ~/.bash_profile
 # RUN echo 'export PATH="$PATH:/opt/mssql-tools/bin"' >> ~/.bashrc && source ~/.bashrc
 
-# Download the adventureworks bacpac file
-RUN curl https://github.com/Microsoft/sql-server-samples/releases/download/adventureworks/AdventureWorks2017.bak \
-	--location --output $TMP_DIR/$DEMO_BACKUP_NAME.bak
-
 # sqlserv data directory, needs to be writable
 WORKDIR $SQL_DATA_DIR
 RUN chmod -R +w ./
 
 # Copy stsrtup scripts, make shell script executable
 WORKDIR /var
+COPY $DEMO_BACKUP_NAME.bak /$TMP_DIR/
 COPY startup.* ./
 COPY setup.* ./
 RUN chmod +x *.sh
