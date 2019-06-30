@@ -40,8 +40,8 @@ RUN chmod -R +w ./
 
 # Copy stsrtup scripts, make shell script executable
 WORKDIR /var
-COPY startup.sh ./
-COPY startup.sql ./
-RUN chmod +x startup.sh
-
+COPY startup.* ./
+COPY setup.* ./
+RUN chmod +x *.sh
+RUN ./setup.sh
 ENTRYPOINT [ "/bin/bash", "-c" ];
