@@ -21,7 +21,7 @@ echo :setvar DEMO_BACKUP_NAME_MDF_PATH $SQL_DATA_DIR/$DEMO_BACKUP_NAME\.mdf >> $
 echo :setvar DEMO_BACKUP_NAME_LOG $DEMO_BACKUP_NAME\_log >> $TMP_DIR/setup.sql
 echo :setvar DEMO_BACKUP_NAME_LOG_PATH $SQL_DATA_DIR/$DEMO_BACKUP_NAME\.ldf >> $TMP_DIR/setup.sql
 cat /var/setup.sql >> $TMP_DIR/setup.sql
-cat $TMP_DIR/setup.sql
+
 echo  "\n###### DONE SETTING UP SQL SCRIPT ######\n"
 
 echo  "\n###### STARTING SQL SERVER ######\n"
