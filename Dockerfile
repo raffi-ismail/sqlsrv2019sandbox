@@ -17,6 +17,7 @@ ENV TMP_DIR /tmp
 # Backup filename (without extension)
 ENV DEMO_BACKUP_NAME AdventureWorks2017
 
+ENV DEFAULT_DOCKER_EXPOST_PORT 1433
 
 RUN apt-get update -qq && apt-get install -qqy apt-utils curl wget
 # The following are needed if building container from vanilla Ubuntu distros.
@@ -44,4 +45,7 @@ RUN chmod +x *.sh
 ENV DELAY_IN_SECONDS_BEFORE_SETUPSQL 60
 
 RUN ./setup.sh
+
+
+EXPOSE $PORT
 ENTRYPOINT [ "/bin/bash", "-c" ];
