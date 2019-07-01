@@ -40,5 +40,8 @@ COPY $DEMO_BACKUP_NAME.bak /$TMP_DIR/
 COPY startup.* ./
 COPY setup.* ./
 RUN chmod +x *.sh
+
+ENV DELAY_IN_SECONDS_BEFORE_SETUPSQL 60
+
 RUN ./setup.sh
 ENTRYPOINT [ "/bin/bash", "-c" ];

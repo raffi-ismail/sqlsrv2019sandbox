@@ -27,7 +27,7 @@ echo  "\n###### DONE SETTING UP SQL SCRIPT ######\n"
 echo  "\n###### STARTING SQL SERVER ######\n"
 MSSQL_PID=$MSSQL_PID /opt/mssql/bin/sqlservr --accept-eula 2>&1 &
 
-sleep 60
+sleep $DELAY_IN_SECONDS_BEFORE_SETUPSQL
 /opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P $SA_PASSWORD -i $TMP_DIR/setup.sql
 if [ $? -ne 0 ]; then
     echo "\nThere was a problem executing the SQL script";
